@@ -132,7 +132,7 @@ public class M360CleanAnimationView extends View {
         mDotRadius = mDotRealRadius;
         AnimatorSet animatorSet = new AnimatorSet();
         ValueAnimator animator = ValueAnimator.ofFloat(0, mCy);
-        animator.setDuration(500);
+        animator.setDuration(1500);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -151,9 +151,8 @@ public class M360CleanAnimationView extends View {
             }
         });
 
-        mCircleRadius = mCircleRealRadius;
-        ValueAnimator animator2 = ValueAnimator.ofFloat(0, mCircleRadius);
-        animator2.setDuration(300);
+        ValueAnimator animator2 = ValueAnimator.ofFloat(0, mCircleRealRadius);
+        animator2.setDuration(1000);
         animator2.setInterpolator(new AccelerateInterpolator());
         animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -171,7 +170,7 @@ public class M360CleanAnimationView extends View {
         });
 
         ValueAnimator animator3 = ValueAnimator.ofInt(0, mCleanTip);
-        animator3.setDuration(300);
+        animator3.setDuration(1000);
         animator3.setInterpolator(new AccelerateInterpolator());
         animator3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
