@@ -13,6 +13,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -132,7 +133,7 @@ public class M360CleanAnimationView extends View {
         mDotRadius = mDotRealRadius;
         AnimatorSet animatorSet = new AnimatorSet();
         ValueAnimator animator = ValueAnimator.ofFloat(0, mCy);
-        animator.setDuration(1500);
+        animator.setDuration(500);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -152,7 +153,7 @@ public class M360CleanAnimationView extends View {
         });
 
         ValueAnimator animator2 = ValueAnimator.ofFloat(0, mCircleRealRadius);
-        animator2.setDuration(1000);
+        animator2.setDuration(300);
         animator2.setInterpolator(new AccelerateInterpolator());
         animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -170,12 +171,13 @@ public class M360CleanAnimationView extends View {
         });
 
         ValueAnimator animator3 = ValueAnimator.ofInt(0, mCleanTip);
-        animator3.setDuration(1000);
+        animator3.setDuration(300);
         animator3.setInterpolator(new AccelerateInterpolator());
         animator3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 mCleanTipString = String.valueOf(valueAnimator.getAnimatedValue());
+                Log.e("info", "mCleanTipString : " + mCleanTipString);
                 invalidate();
             }
         });
@@ -188,7 +190,7 @@ public class M360CleanAnimationView extends View {
         });
 
         animatorSet.play(animator).before(animator2);
-        animatorSet.play(animator3).with(animator2);
+        animatorSet.play(animator3).before(animator2);
 
         animatorSet.start();
     }
